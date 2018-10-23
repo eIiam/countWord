@@ -1,4 +1,3 @@
-
 const reg = /[^A-zÀ-ú0-9]+/;
 const WORD_MIN_LENGHT = 2;
 
