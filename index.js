@@ -1,17 +1,14 @@
-const reg = /[^A-zÀ-ú0-9]+/;
-const WORD_MIN_LENGHT = 2;
-
-const countOccurence = (acc, curr) => {
-  if (curr.length < WORD_MIN_LENGHT ) return acc;
+const countOccurence = wordMinLength => (acc, curr) => {
+  if (curr.length < wordMinLength ) return acc;
 
   const word = curr.toLowerCase();
-  acc[word] = (word in acc ? acc[word] + 1 : 1);
+  acc[word] = word in acc ? acc[word] + 1 : 1;
+
   return acc;
 };
 
-module.exports = function wordCount(string) {
-  if (typeof string !== "string") throw new TypeError("string is needed");
+module.exports = function wordCount(text, wordMinLength = 2) {
+  if (typeof text !== "string") throw new TypeError("String is needed");
   
-  const words = string.split(reg);
-  return words.reduce(countOccurence, {});
+  return text.split( /[^A-zÀ-ú0-9]+/).reduce(countOccurence(wordMinLength), {});
 };

@@ -23,4 +23,14 @@ describe('wordCount', function() {
       }
     );
   });
+  it('should match occurence with word min length to 4', function() {
+    assert.deepEqual(
+      wordCount('La différence entre toi et moi, c’est que moi j’ai la classe.', 4), 
+      { 
+        'différence': 1,
+        entre: 1,
+        classe: 1 
+      }
+    );
+  });
 });
